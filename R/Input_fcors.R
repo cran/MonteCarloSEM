@@ -18,6 +18,6 @@ fcors.value <-function(nf, cors){
   if(nf==1){fcors<-matrix(1,1,1)}
   if(any(cors > 1) | any(cors < -1 )){stop("Values of the correlation should be between -1 and +1.
                                            Please re-run the function.")}
-  fcors<-matrix(ncol = nf, cors)
+  if(nf>1){fcors<-matrix(ncol = nf, cors)}
   return(fcors)
 }

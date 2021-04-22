@@ -18,7 +18,7 @@ loading.value <-function(nf, fl.loads){
 
   fl.matx<-matrix(ncol = nf, fl.loads)
   colSums(fl.matx !=0)
-  if(nf==1 & length(fl.loads<=2)){stop("Note: One-factor models should have at least 3 items.
+  if(nf==1 & length(fl.loads)<=2){stop("Note: One-factor models should have at least 3 items.
                                       Please re-run the function.")}
   if(nf > 1 & any(colSums(fl.matx !=0)<2)){stop("Note: Mutiple-factor models should have at least 2 items under each factor.
                                       Please re-run the function.")}

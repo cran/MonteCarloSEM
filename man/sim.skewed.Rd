@@ -43,7 +43,7 @@ fl<-loading.value(nf=3, fl.loads=c(.5,.5,.5,0,0,0,0,0,0,0,0,.3,.3,.3,0,0,0,0,0,0
 ifN<-c(1,1,1,0,0,0,0,0)
 fleis<-c(1.0174852, .190995, -.018577) # The values for skewness=1 and kurtosis=1
 
-sim.skewed(nd=10, ss=1000, fcors=fc,loading=fl, nonnormal = ifN, Fleishman = fleis, f.loc=tempdir())
+sim.skewed(nd=10, ss=100, fcors=fc,loading=fl, nonnormal = ifN, Fleishman = fleis, f.loc=tempdir())
 }
 \author{
 Fatih Orçan
