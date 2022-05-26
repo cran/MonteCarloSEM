@@ -6,18 +6,24 @@
 #' This column shows if the model convergency. If the model is converged without any problem the value will be "CONVERGE"
 #' If it is not converged the value will be "NONCONVERGE" and all the values in the line will be "NA"
 #' If there are some kind of warning (such as negative variance) during the model run the value will be "WARNING" and based on the warning type some of the values might me "NA".
-#' To run the simulation previously generated data sets and the list of the data sets (Data_List.dat) should be located into the same folder at the working directory.
+#' To run the simulation, previously generated (either with the package functions or any other software) data sets and the list of the data sets (i.e., "Data_List.dat") should be located into the same folder at the working directory.
 #'
 #' @author Fatih Orcan
 #' @importFrom lavaan cfa parameterEstimates fitmeasures standardizedSolution lavTech lavInspect
 #' @importFrom utils read.table write.csv
 #' @param model Lavaan model
 #' @param PEmethod Parameter estimation method. The default  is ML.
-#' @param dataList List of the names of data sets generated earlier.
-#' @param f.loc File location. It indicates where the simulated data sets are located.
+#' @param dataList List of the names of data sets generated earlier either with the package functions or any other software.
+#' @param f.loc File location. It indicates where the simulated data sets and "dataList" are located.
 #' @export
 #' @examples
-#' \donttest{
+#'
+#' #   Data needed to be generated  at first step.
+#' fc<-fcors.value(nf=3, cors=c(1,.5,.6,.5,1,.4,.6,.4,1))
+#' fl<-loading.value(nf=3, fl.loads=c(.5,.5,.5,0,0,0,0,0,0,0,0,.6,.6,.6,0,0,0,0,0,0,0,0,.4,.4))
+#' sim.normal(nd=10, ss=1000, fcors=fc, loading<-fl,  f.loc=tempdir())
+#'
+#' #  Then simulation should be run at the second step.
 #' lavaanM<-'
 #' #CFA Model
 #' f1	=~ NA*x1 + x2 + x3
@@ -34,8 +40,12 @@
 #' '
 #' dl<-"Data_List.dat"  # should be located in the working directory.
 #'
+#' # Please note that this function uses data sets and the list files which were generated previously.
+#' # If there is no such a data sets and the list file, it will print an error message
+#' #  saying "cannot open the connection"
+#'
 #' fit.simulation(model=lavaanM, PEmethod="MLR", dataList=dl, f.loc=tempdir())
-#' }
+#'
 
 fit.simulation<-function(model, PEmethod="ML", dataList="Data_List.dat", f.loc){
 
