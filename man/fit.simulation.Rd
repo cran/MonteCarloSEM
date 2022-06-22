@@ -30,7 +30,7 @@ To run the simulation, previously generated (either with the package functions o
 #   Data needed to be generated  at first step.
 fc<-fcors.value(nf=3, cors=c(1,.5,.6,.5,1,.4,.6,.4,1))
 fl<-loading.value(nf=3, fl.loads=c(.5,.5,.5,0,0,0,0,0,0,0,0,.6,.6,.6,0,0,0,0,0,0,0,0,.4,.4))
-sim.normal(nd=10, ss=1000, fcors=fc, loading<-fl,  f.loc=tempdir())
+sim.normal(nd=10, ss=100, fcors=fc, loading<-fl,  f.loc=tempdir())
 
 #  Then simulation should be run at the second step.
 lavaanM<-'

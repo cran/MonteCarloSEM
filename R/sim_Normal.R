@@ -1,7 +1,7 @@
 #' @title This function simulates (generates) data sets by given a Confirmatory Factor Analysis model.
 #' @description Based on a given Confirmatory Factor Analysis model, this function simulates data sets.
 #' In each data file, the first column shows sample numbers. The second and other columns show actual simulated data sets for each item.
-#' If the model have 2 factor and each factor as 3 items, for example, column names will be something like "ID, F1_x1, F1_x2,F1_x3,F2_x1,F2_x2,F2_x3".
+#' If the model have 2 factors and each factor has 3 items, for example, column names will be something like "ID, F1_x1, F1_x2,F1_x3,F2_x1,F2_x2,F2_x3".
 #' On the other hand, number of rows shows the sample number of the data. Besides, there will be two more files saved in the folder.
 #' First of them is "Model_Info.dat". This file includes factor correlation and factor loading matrices.
 #' The second is "Data_List.dat". The file includes names of the data sets which were generated.
