@@ -2,7 +2,7 @@
 % Please edit documentation in R/Input_fcors.R
 \name{fcors.value}
 \alias{fcors.value}
-\title{This function specifies correlation matrix between the factors.}
+\title{This function specifies the correlation matrix between the factors.}
 \usage{
 fcors.value(nf, cors)
 }
@@ -12,12 +12,12 @@ fcors.value(nf, cors)
 \item{cors}{vector of the correlations.}
 }
 \value{
-The function returns factor correlation matrix. This is a symmetric matrix, which shows the correlation values among the factors in the model.
+The function returns the factor correlation matrix. This is a symmetric matrix, which shows the correlation values among the factors in the model.
 }
 \description{
 The user specifies the correlation matrix between the factors. The values entered should be between -1 and +1.
-The values can be given by column or row but should be given in an order. Please see the example for a correlation among three-factors.
-In case there is only one factor fallowing line should be entered
+The values can be given by column or row but should be given in order. Please see the example for a correlation among three factors.
+In case there is only one factor following line should be entered
 "cors.value(nf=1, cors=c(1,1,1))"
 }
 \examples{

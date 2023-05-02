@@ -2,7 +2,7 @@
 % Please edit documentation in R/sim_Skewed.R
 \name{sim.skewed}
 \alias{sim.skewed}
-\title{Simulates Data sets by given a Confirmatory Factor Analysis model.}
+\title{Simulates Data sets by a given Confirmatory Factor Analysis model.}
 \usage{
 sim.skewed(
   nd = 10,
@@ -15,27 +15,27 @@ sim.skewed(
 )
 }
 \arguments{
-\item{nd}{Number of data set, an integer.}
+\item{nd}{Number of the data set, an integer.}
 
-\item{ss}{Sample Size, an integer and larger than 10.}
+\item{ss}{The sample Size, an integer and larger than 10.}
 
-\item{fcors}{Factor correlation matrix, a symmetric matrix. If one factor model is used this should be matrix(1,1,1).}
+\item{fcors}{The factor correlation matrix, a symmetric matrix. If one-factor model is used this should be matrix(1,1,1).}
 
-\item{loading}{Factor loading matrix. Column represents number of factors and non zero row represents number of items under each factor.}
+\item{loading}{The factor loading matrix. The column represents number of factors and non-zero rows represent the number of items under each factor.}
 
-\item{nonnormal}{vector of 0 and 1s. 0 indicates normal, 1 indicates non-normal data generation. If nonnormal is not indicated a normal data will be generated.}
+\item{nonnormal}{A vector of 0 and 1s. 0 indicates normal, and 1 indicates non-normal data generation. If nonnormal is not indicated normal data will be generated.}
 
-\item{Fleishman}{B, C and D values from Fleishman's power method. A = -C.}
+\item{Fleishman}{The B, C, and D values from Fleishman's power method. A = -C.}
 
-\item{f.loc}{File location. Generated data sets will be saved at the user defined location.}
+\item{f.loc}{File location. Generated data sets will be saved at the user-defined location.}
 }
 \description{
 Based on a given Confirmatory Factor Analysis model, this function simulates data sets.
 In each data file, the first column shows sample numbers. The second and other columns show actual simulated data sets for each item.
-If the model have 2 factor and each factor as 3 items, for example, column names will be something like "ID, F1_x1, F1_x2,F1_x3,F2_x1,F2_x2,F2_x3".
-On the other hand, number of rows shows the sample number of the data. Besides, there will be two more files saved in the folder.
-First of them is "Model_Info.dat". This file includes factor correlation and factor loading matrices, a vector showing nonnormal items and values of B, C and D for Fleishman's power method.
-The second is "Data_List.dat". The file includes names of the data sets which were generated.
+If the model has 2 factors and each factor has 3 items, for example, column names will be something like "ID, F1_x1, F1_x2, F1_x3, F2_x1, F2_x2, F2_x3".
+On the other hand, the number of rows shows the sample number of the data. Besides, there will be two more files saved in the folder.
+First of them is "Model_Info.dat". This file includes factor correlation and factor loading matrices, a vector showing non-normal items and values of B, C, and D for Fleishman's power method.
+The second is "Data_List.dat". The file contains the names of the data sets which were generated.
 }
 \examples{
 fc<-fcors.value(nf=3, cors=c(1,.5,.6,.5,1,.4,.6,.4,1))

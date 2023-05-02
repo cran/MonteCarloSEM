@@ -2,30 +2,30 @@
 % Please edit documentation in R/sim_Categoric.R
 \name{sim.categoric}
 \alias{sim.categoric}
-\title{This function simulates (generates) categorical data sets by given a Confirmatory Factor Analysis model.}
+\title{This function simulates (generates) categorical data sets by a given Confirmatory Factor Analysis model.}
 \usage{
 sim.categoric(nd = 10, ss = 100, fcors, loading, f.loc, threshold)
 }
 \arguments{
-\item{nd}{Number of data set, an integer.}
+\item{nd}{Number of the data set, an integer.}
 
 \item{ss}{Sample Size, an integer and larger than 10.}
 
-\item{fcors}{Factor correlation matrix, a symmetric matrix. If one factor model is used this should be matrix(1,1,1).}
+\item{fcors}{The factor correlation matrix, a symmetric matrix. If one-factor model is used this should be matrix(1,1,1).}
 
-\item{loading}{Factor loading matrix. Column represent factors and non zero row represents number of items under each factor.}
+\item{loading}{The factor loading matrix. The column represents factors and non-zero rows represent the number of items under each factor.}
 
-\item{f.loc}{File location. Generated data sets will be saved at the user defined location.}
+\item{f.loc}{File location. Generated data sets will be saved at the user-defined location.}
 
-\item{threshold}{threshold values}
+\item{threshold}{The threshold values.}
 }
 \description{
 Based on a given Confirmatory Factor Analysis model, this function simulates data sets.
 In each data file, the first column shows sample numbers. The second and other columns show actual simulated data sets for each item.
-If the model have 2 factor and each factor as 3 items, for example, column names will be something like "ID, F1_x1, F1_x2,F1_x3,F2_x1,F2_x2,F2_x3".
-On the other hand, number of rows shows the sample number of the data. Besides, there will be two more files saved in the folder.
+If the model has 2 factors and each factor has 3 items, for example, column names will be something like "ID, F1_x1, F1_x2, F1_x3, F2_x1, F2_x2, F2_x3".
+On the other hand, the number of rows shows the sample number of the data. Besides, there will be two more files saved in the folder.
 First of them is "Model_Info.dat". This file includes factor correlation and factor loading matrices.
-The second is "Data_List.dat". The file includes names of the data sets which were generated.
+The second is "Data_List.dat". The file contains the names of the data sets which were generated.
 }
 \examples{
 fc<-fcors.value(nf=3, cors=c(1,.5,.6,.5,1,.4,.6,.4,1))
