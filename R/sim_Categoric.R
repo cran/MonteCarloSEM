@@ -16,15 +16,16 @@
 #' @param loading The factor loading matrix. The column represents factors and non-zero rows represent the number of items under each factor.
 #' @param f.loc File location. Generated data sets will be saved at the user-defined location.
 #' @param threshold The threshold values.
+#' @param cont TRUE or FALSE: Indicating whether original continuous data will be saved or not.
 #' @export
 #' @examples
 #' fc<-fcors.value(nf=3, cors=c(1,.5,.6,.5,1,.4,.6,.4,1))
 #' fl<-loading.value(nf=3, fl.loads=c(.5,.5,.5,0,0,0,0,0,0,0,0,.6,.6,.6,0,0,0,0,0,0,0,0,.4,.4))
 #' tres<-c(-Inf, -1.645, -.643, .643, 1.645, Inf) # five categories
 #'
-#' sim.categoric(nd=100, ss=1000, fcors=fc,loading=fl, f.loc=tempdir(), threshold = tres)
+#' sim.categoric(nd=100,ss=100, fcors=fc,loading=fl, f.loc=tempdir(), threshold = tres)
 
-sim.categoric<-function(nd=10, ss=100, fcors, loading, f.loc, threshold ){
+sim.categoric<-function(nd=10, ss=100, fcors, loading, f.loc, threshold, cont="FALSE"){
   nd<-as.integer(nd)
   if (is.na(nd)==TRUE | nd < 1) {
     message("Error: The number of dataset should be a positive integer.")
@@ -42,7 +43,7 @@ sim.categoric<-function(nd=10, ss=100, fcors, loading, f.loc, threshold ){
 
   if (all(is.numeric(loading))!= TRUE | any(loading>=1) | any(loading< 0)) {
     message("Error: Factor loadings should be smaller than 1 and larger than 0.")
-    message("Note: The loading matrix should only not include cross loading.")
+    message("Note: The loading matrix should not include cross loading.")
     stop()}
 
   if(dim(loading)[2]!=nf){
@@ -71,8 +72,11 @@ sim.categoric<-function(nd=10, ss=100, fcors, loading, f.loc, threshold ){
     for(j in 1:ss){
       item.scores[j,]<-loading%*%cor.f.scores[j,]+e.loading*escores[j,]
       f.names[n.d]<-c(paste("C_Data_",n.d,".dat", sep = ""))
-    }
+      }
 
+    if (cont == TRUE){
+      write.table(item.scores, file=paste(f.loc,"/Data_",n.d,".dat", sep=""), sep = "\t", col.names = FALSE, row.names = FALSE,quote = FALSE)
+}
     # So far the continuous data were generated. After here, the categorical data will be simulated.
     cat.scores<-item.scores
 

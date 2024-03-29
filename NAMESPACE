@@ -3,6 +3,7 @@
 export(MAR.data)
 export(MCAR.data)
 export(MNAR.data)
+export(categorize)
 export(fcors.value)
 export(fit.simulation)
 export(loading.value)

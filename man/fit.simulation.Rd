@@ -7,6 +7,7 @@
 fit.simulation(
   model,
   PEmethod = "ML",
+  Ordered = FALSE,
   dataList = "Data_List.dat",
   f.loc,
   missing = NULL
@@ -16,6 +17,8 @@ fit.simulation(
 \item{model}{Lavaan model}
 
 \item{PEmethod}{Parameter estimation method. The default is ML.}
+
+\item{Ordered}{Logical, TRUE means that the data will be defined as ordered.}
 
 \item{dataList}{List of the names of data sets generated earlier either with the package functions or any other software.}
 
@@ -57,11 +60,11 @@ f3	~~ 1*f3
 '
 dl<-"Data_List.dat"  # should be located in the working directory.
 
-# Please note that this function uses data sets and the list files which were generated previously.
+# Note that this function uses data sets and the list files which were generated previously.
 # If there are no such a data sets and the list file, it will print an error message
 #  saying "cannot open the connection"
 
-fit.simulation(model=lavaanM, PEmethod="MLR", dataList=dl, f.loc=tempdir())
+fit.simulation(model=lavaanM, PEmethod="MLR", Ordered=FALSE, dataList=dl, f.loc=tempdir())
 
 }
 \author{

@@ -16,6 +16,7 @@
 #' @param dataList List of the names of data sets generated earlier either with the package functions or any other software.
 #' @param f.loc File location. It indicates where the simulated data sets and "dataList" are located.
 #' @param missing as in the lavaan package (See lavOptions)
+#' @param Ordered Logical, TRUE means that the data will be defined as ordered.
 #' @export
 #' @examples
 #'
@@ -41,14 +42,14 @@
 #' '
 #' dl<-"Data_List.dat"  # should be located in the working directory.
 #'
-#' # Please note that this function uses data sets and the list files which were generated previously.
+#' # Note that this function uses data sets and the list files which were generated previously.
 #' # If there are no such a data sets and the list file, it will print an error message
 #' #  saying "cannot open the connection"
 #'
-#' fit.simulation(model=lavaanM, PEmethod="MLR", dataList=dl, f.loc=tempdir())
+#' fit.simulation(model=lavaanM, PEmethod="MLR", Ordered=FALSE, dataList=dl, f.loc=tempdir())
 #'
 
-fit.simulation<-function(model, PEmethod="ML", dataList="Data_List.dat", f.loc,
+fit.simulation<-function(model, PEmethod="ML", Ordered=FALSE, dataList="Data_List.dat", f.loc,
                          missing=NULL){
 
   data.names<-read.table(paste(f.loc, "/", dataList,sep=""), header = FALSE)
@@ -64,7 +65,7 @@ fit.simulation<-function(model, PEmethod="ML", dataList="Data_List.dat", f.loc,
   colnames(veri)<-c("ID", paste("x",seq(1:(dim(veri)[2]-1)),sep=""))
   veri<-veri[,-1]
 
-  sonuc<-cfa(model,veri, estimator= PEmethod )
+  sonuc<-cfa(model,veri, estimator= PEmethod, ordered = Ordered )
 
   #P.Est<-parameterEstimates(sonuc)
   #Sp.Est<-standardizedSolution(sonuc)
@@ -79,7 +80,8 @@ fit.simulation<-function(model, PEmethod="ML", dataList="Data_List.dat", f.loc,
     colnames(veri)<-c("ID", paste("x",seq(1:(dim(veri)[2]-1)),sep=""))
     veri<-veri[,-1]
 
-    sonuc<-cfa(model,veri, estimator =PEmethod)
+
+    sonuc<-cfa(model,veri, estimator =PEmethod, ordered = Ordered)
     tum.sonuc[i,1]<-i
 
     if(lavTech(sonuc, "converged")==TRUE){

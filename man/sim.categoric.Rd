@@ -4,7 +4,15 @@
 \alias{sim.categoric}
 \title{This function simulates (generates) categorical data sets by a given Confirmatory Factor Analysis model.}
 \usage{
-sim.categoric(nd = 10, ss = 100, fcors, loading, f.loc, threshold)
+sim.categoric(
+  nd = 10,
+  ss = 100,
+  fcors,
+  loading,
+  f.loc,
+  threshold,
+  cont = "FALSE"
+)
 }
 \arguments{
 \item{nd}{Number of the data set, an integer.}
@@ -18,6 +26,8 @@ sim.categoric(nd = 10, ss = 100, fcors, loading, f.loc, threshold)
 \item{f.loc}{File location. Generated data sets will be saved at the user-defined location.}
 
 \item{threshold}{The threshold values.}
+
+\item{cont}{TRUE or FALSE: Indicating whether original continuous data will be saved or not.}
 }
 \description{
 Based on a given Confirmatory Factor Analysis model, this function simulates data sets.
@@ -32,7 +42,7 @@ fc<-fcors.value(nf=3, cors=c(1,.5,.6,.5,1,.4,.6,.4,1))
 fl<-loading.value(nf=3, fl.loads=c(.5,.5,.5,0,0,0,0,0,0,0,0,.6,.6,.6,0,0,0,0,0,0,0,0,.4,.4))
 tres<-c(-Inf, -1.645, -.643, .643, 1.645, Inf) # five categories
 
-sim.categoric(nd=100, ss=1000, fcors=fc,loading=fl, f.loc=tempdir(), threshold = tres)
+sim.categoric(nd=100,ss=100, fcors=fc,loading=fl, f.loc=tempdir(), threshold = tres)
 }
 \author{
 Fatih Orçan
