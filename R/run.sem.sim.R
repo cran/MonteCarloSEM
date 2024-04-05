@@ -55,8 +55,8 @@ fit.simulation<-function(model, PEmethod="ML", Ordered=FALSE, dataList="Data_Lis
   data.names<-read.table(paste(f.loc, "/", dataList,sep=""), header = FALSE)
 
   fit.names<-c("rep#","Notes", "chisq", "df", "pvalue","chisq.scaled", "df.scaled", "pvalue.scaled", "chisq.scaling.factor",
-               "baseline.chisq", "baseline.df", "baseline.pvalue", "cfi","tli","srmr", "rmsea", "rmsea.ci.lower",
-               "rmsea.ci.upper", "rmsea.pvalue", "logl","aic", "bic")
+               "baseline.chisq", "baseline.df", "baseline.pvalue", "cfi","cfi.robust","cfi.scaled", "tli","tli.robust","tli.scaled", "srmr",
+               "srmr_bentler","srmr_mplus", "rmsea","rmsea.robust","rmsea.scaled", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.pvalue", "logl","aic", "bic")
   par.names1<-c("est","se","pvalue")
   par.names2<-c("std.est","std.se","pvalue")
 
